@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="RePaint-NeRF.">
+    <meta name="keywords"
+        content="NeRF, Inpainting, Segmentation, SDS, LPIPS, Multli-View Inpainting, View Consistency, 3D Reconstruction, dreamfusion">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RePaint-NeRF</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title text-muted">
+                            <!-- <span class="text-primary">߷</span> -->
+                            <span class="text-dark">RePaint-NeRF</span>: RePaint-NeRF: NeRF Editting via Semantic Masks
+                            and Diffusion Models
+                        </h1>
+                        <p class="is-size-5 text-center">
+                            IJCAI 2023
+                        </p>
+
+                        <!-- <p class="is-size-5 text-center">
+            arXiv
+          </p> -->
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?hl=zh-CN&user=t39WvtUAAAAJ">Xingchen
+                                    Zhou</a><sup>1,2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=wSdlXDYAAAAJ&hl=zh-CN&oi=ao">Ying
+                                    He</a><sup>1,2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=zuGMGBoAAAAJ&hl=zh-CN&oi=sra">F
+                                    Richard
+                                    Yu</a><sup>1,2</sup>,
+                            </span>
+                            <span class="author-block">
+                                Jianqiang
+                                Li<sup>1,3</sup>,
+                            </span>
+                            <span class="author-block">
+                                You
+                                Li<sup>2</sup>,
+                            </span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block text-muted">zhouxingchen2021@email.szu.edu.cn,</span>
+                            <span class="author-block text-muted">{heying, yufei, lijq}@szu.edu.cn,</span>
+                            <span class="author-block text-muted">liyougis@gmail.com</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>College of Computer Science and Software Engineering,
+                                Shenzhen University,</span>
+                            <span class="author-block"><sup>2</sup>Guangdong Laboratory of Artificial Intelligence and
+                                Digital Economy (SZ)</span>
+                            <span class="author-block"><sup>3</sup>National Engineering Laboratory for Big Data System
+                                Computing Technology, Shenzhen University</span>
+                            <!-- </br>
+            <span class="author-block"><sup>*</sup>Denotes equal contribution</span> -->
+                        </div>
+
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2306.05668"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- <span class="link-block">
+                <a href="paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (High-Quality)</span>
+                </a>
+              </span> -->
+                                <!-- <span class="link-block">
+                                    <a href="https://youtu.be/WEgJf1WC5SQ"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+                                <span class="link-block">
+                                    <a href="https://github.com/StarsTesla/RePaint-NeRF"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <!-- <img src="data/images/ov9.png" style="float: right; margin-left:20px; margin-bottom: 10px"
+                            width="100%;" /> -->
+                        <p class="content has-text-justified">
+                            The emergence of Neural Radiance Fields (NeRF) has promoted the development of synthesized
+                            high-fidelity views of the
+                            intricate real world. However, it is still a very demanding task to repaint the content in
+                            NeRF. In this paper, we
+                            propose a novel framework that can take RGB images as input and alter the 3D content in
+                            neural scenes. Our work
+                            leverages existing diffusion models to guide changes in the designated 3D content.
+                            Specifically, we semantically select
+                            the object we want to modify first, and a pre-trained diffusion model will guide the NeRF
+                            model to generate new 3D
+                            objects, which can improve the editability, diversity, and application range of NeRF.
+                            Experiment results show that our
+                            algorithm is effective for editing 3D objects in NeRF under different text prompts,
+                            including editing appearance, shape,
+                            etc. We validate our method on real-world datasets and synthetic-world datasets for these
+                            editing tasks. See
+                            \url{https://repaintnerf.github.io} for a better view into our edited results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe src="https://www.youtube.com/embed/WEgJf1WC5SQ" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </section>
+
+    <!-- 方法 -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Method. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full">
+                    <h2 class="title is-3">Edited Pipeline</h2>
+                    <div class="content">
+                        <img src="data/images/ov9.png" width="100%" />
+                    </div>
+                    </br>
+                    <div class="content has-text-justified">
+                        <p>
+                            Overview of RePaint-NeRF. We present an editing method in NeRF. In the first stage, we
+                            additionally optimize a feature
+                            field along with the color module and density module
+                            to extract the content mask by using text or patch. In another way of speaking, we separate
+                            the part we want to change
+                            for a generation. Then, we use the mask and text prompt to generate the new content guided
+                            by the pre-trained diffusion
+                            model and CLIP model. After optimization of the generation, we can finally repaint a
+                            pre-trained NeRF model with view
+                            consistency and
+                            scene integrity.
+                        </p>
+                        </br>
+                    </div>
+                </div>
+            </div>
+            <!--/ Method. -->
+        </div>
+    </section>
+
+    <!-- 视频 Qualitative Results-->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <!-- <h2 class="title">Qualitative Results</h2> -->
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item rounded-0 border-0 item-sink">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/man.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/man_i.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+                    <div class="item rounded-0 border-0 item-sink">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/redcar.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/redcar_i.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+                    <div class="item rounded-0 border-0 item-piano">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/flower.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/flower_i.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item rounded-0 border-0 item-light">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/hotdog.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/hotdog_i.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item rounded-0 border-0 item-light">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/hotdog_i2.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/hotdog_i3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item rounded-0 border-0 item-sink">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/chesstable.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/chesstable_i.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+                    <div class="item rounded-0 border-0 item-light">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/fortress.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/fortress_i.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item rounded-0 border-0 item-light">
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/bench.mp4" type="video/mp4">
+                        </video>
+                        <video poster="" autoplay muted loop preload="none" class="w-auto" style="height:22vh;">
+                            <source src="data/videos/bench_i.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <br />
+
+
+
+
+
+
+
+
+
+
+    <!-- BibTex -->
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@inproceedings{RePaint-NeRF,
+      title={{RePaint-NeRF}: NeRF Editting via Semantic Masks and Diffusion Models}, 
+      author={Zhou, Xingchen and He, Ying and Yu, F Richard and Li, Jianqiang and Li, You},
+      year={2023},
+      booktitle={IJCAI},
+}</code></pre>
+        </div>
+    </section>
+
+
+    <!-- borrow -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            Website template borrowed from <a
+                                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+                                href="https://github.com/nesf3d/nesf3d.github.io">NeSF</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <p>
+        Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> and <a
+            href="https://github.com/nesf3d/nesf3d.github.io">NeSF</a>.
+    </p>
+</body>
+
+</html>
